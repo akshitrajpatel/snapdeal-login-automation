@@ -23,6 +23,7 @@ public class HomePage {
     // Method to navigate to Snapdeal homepage
     public void navigateToHomePage() {
         driver.get("https://www.snapdeal.com/");
+        System.out.println(driver.getPageSource());
     }
 
     // Method to click on the login link with explicit wait
@@ -30,5 +31,6 @@ public class HomePage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         WebElement loginElement = wait.until(ExpectedConditions.visibilityOfElementLocated(loginLink));
         loginElement.click();
+        System.out.println(driver.getPageSource());
     }
 }
