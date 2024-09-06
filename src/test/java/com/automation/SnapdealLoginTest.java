@@ -1,5 +1,6 @@
 package com.automation;
 
+import com.snapdeal.HomePage;
 import com.snapdeal.LoginPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class SnapdealLoginTest {
 
     private WebDriver driver;
+    private HomePage homePage;
     private LoginPage loginPage;
 
     @BeforeClass
@@ -29,11 +31,18 @@ public class SnapdealLoginTest {
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        homePage = new HomePage(driver);    // Initialize HomePage object
         loginPage = new LoginPage(driver);  // Initialize LoginPage object
     }
 
     @Test
     public void testLogin() {
+        // Navigate to Snapdeal homepage
+        homePage.navigateToHomePage();
+
+        // Click on the login link/button
+        homePage.clickLoginLink();
+
         // Navigate to Snapdeal login page
         loginPage.navigateToLoginPage();
 
@@ -44,7 +53,7 @@ public class SnapdealLoginTest {
         loginPage.clickLoginButton();
 
         // Check if the OTP field is displayed, meaning login action was initiated
-        Assert.assertTrue(loginPage.isOtpFieldDisplayed(), "Login flow did not trigger correctly.");
+        Assert.assertTrue(loginPage.isOtpFieldDisplayed(), "OTP field was not displayed.");
     }
 
     @AfterClass
@@ -54,3 +63,4 @@ public class SnapdealLoginTest {
         }
     }
 }
+
