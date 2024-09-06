@@ -25,14 +25,14 @@ public class SnapdealLoginTest {
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
-        
+
         // Uncomment for headless mode:
         // options.addArguments("--headless", "--disable-gpu");
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        homePage = new HomePage(driver);    // Initialize HomePage object
-        loginPage = new LoginPage(driver);  // Initialize LoginPage object
+        homePage = new HomePage(driver);
+        loginPage = new LoginPage(driver);
     }
 
     @Test
@@ -40,8 +40,14 @@ public class SnapdealLoginTest {
         // Navigate to Snapdeal homepage
         homePage.navigateToHomePage();
 
+        // Switch to iframe if needed
+        homePage.switchToIframe();
+
         // Click on the login link/button
         homePage.clickLoginLink();
+
+        // Switch back to the main content
+        homePage.switchToDefaultContent();
 
         // Navigate to Snapdeal login page
         loginPage.navigateToLoginPage();
