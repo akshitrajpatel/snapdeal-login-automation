@@ -13,7 +13,7 @@ public class HomePage {
     private WebDriver driver;
 
     // Define locator for the login link on the homepage
-    private By loginLink = By.xpath("//a[text()='Login']"); // Update XPath if necessary
+    private By loginLink = By.xpath("//*[@id='stack_yuda']"); // Update XPath if necessary
 
     // Constructor to initialize WebDriver
     public HomePage(WebDriver driver) {
