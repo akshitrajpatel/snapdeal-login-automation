@@ -39,26 +39,19 @@ public class SnapdealLoginTest {
     public void testLogin() {
         // Navigate to Snapdeal homepage
         homePage.navigateToHomePage();
-
-        // Switch to iframe if needed
-        homePage.switchToIframe();
+        System.out.println(driver.getPageSource());
 
         // Click on the login link/button
         homePage.clickLoginLink();
+        System.out.println(driver.getPageSource());
 
-        // Switch back to the main content
-        homePage.switchToDefaultContent();
-
-        // Navigate to Snapdeal login page
-        loginPage.navigateToLoginPage();
-
-        // Enter a mobile number
+        // Enter mobile number
         loginPage.enterMobileNumber("8318162329");
 
         // Click login button
         loginPage.clickLoginButton();
 
-        // Check if the OTP field is displayed, meaning login action was initiated
+        // Check if the OTP field is displayed
         Assert.assertTrue(loginPage.isOtpFieldDisplayed(), "OTP field was not displayed.");
     }
 
@@ -69,4 +62,3 @@ public class SnapdealLoginTest {
         }
     }
 }
-
