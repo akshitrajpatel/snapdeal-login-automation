@@ -12,7 +12,7 @@ public class HomePage {
 
     // Define locators
     private By iframeLocator = By.tagName("iframe");  // Locator for the iframe containing the login link
-    private By loginLink = By.xpath(//*[@id="loginIframe"]); // Locator for the login link inside the iframe
+    private By loginLink = By.xpath("//*[@id='loginIframe']"); // Locator for the login link inside the iframe
 
     // Constructor to initialize WebDriver
     public HomePage(WebDriver driver) {
