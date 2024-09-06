@@ -6,13 +6,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 public class HomePage {
 
     private WebDriver driver;
 
-    // Define locators
-    private By iframeLocator = By.tagName("iframe");  // Locator for the iframe containing the login link
-    private By loginLink = By.xpath("//*[@id='loginIframe']"); // Locator for the login link inside the iframe
+    // Define locators for the login link or button on the homepage
+    private By loginLink = By.xpath("//*[@id='loginIframe']"); // Update the XPath if needed
 
     // Constructor to initialize WebDriver
     public HomePage(WebDriver driver) {
@@ -24,24 +25,23 @@ public class HomePage {
         driver.get("https://www.snapdeal.com/");
     }
 
-    // Method to switch to the iframe
+    // Method to switch to iframe (if needed)
     public void switchToIframe() {
-        WebDriverWait wait = new WebDriverWait(driver, 20);  // Wait for up to 20 seconds
-        WebElement iframeElement = wait.until(ExpectedConditions.presenceOfElementLocated(iframeLocator));
-        driver.switchTo().frame(iframeElement);  // Switch to the iframe
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        // Assuming the iframe can be located by its tag name; update if necessary
+        WebElement iframe = wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("iframe")));
+        driver.switchTo().frame(iframe);
+    }
+
+    // Method to click on the login link/button with explicit wait
+    public void clickLoginLink() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebElement loginElement = wait.until(ExpectedConditions.visibilityOfElementLocated(loginLink));
+        loginElement.click();
     }
 
     // Method to switch back to the main content
-    public void switchToMainContent() {
-        driver.switchTo().defaultContent();  // Switch back to the main content
-    }
-
-    // Method to click on the login link/button
-    public void clickLoginLink() {
-        switchToIframe();  // Switch to the iframe first
-        WebDriverWait wait = new WebDriverWait(driver, 20);  // Wait for up to 20 seconds
-        WebElement loginElement = wait.until(ExpectedConditions.visibilityOfElementLocated(loginLink));
-        loginElement.click();
-        switchToMainContent();  // Switch back to the main content if needed
+    public void switchToDefaultContent() {
+        driver.switchTo().defaultContent();
     }
 }
