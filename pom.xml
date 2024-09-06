@@ -48,7 +48,7 @@
                 <configuration>
                     <suiteXmlFiles>
                         <!-- TestNG XML to control the test execution -->
-                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                        <suiteXmlFile>${basedir}/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
