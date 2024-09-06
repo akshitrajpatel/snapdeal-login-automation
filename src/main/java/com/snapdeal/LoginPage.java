@@ -1,9 +1,11 @@
 package com.snapdeal;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
 
 public class LoginPage {
 
@@ -36,7 +38,7 @@ public class LoginPage {
 
     // Method to check if OTP input field is displayed (indicating login step is successful)
     public boolean isOtpFieldDisplayed() {
-        WebDriverWait wait = new WebDriverWait(driver, 20);  // Wait for up to 20 seconds
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));  // Wait for up to 20 seconds
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(otpField));  // Wait for OTP field to become visible
             return driver.findElement(otpField).isDisplayed();
