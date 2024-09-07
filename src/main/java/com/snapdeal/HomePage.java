@@ -13,7 +13,7 @@ public class HomePage {
     private WebDriver driver;
 
     // Define locator for the login link on the homepage
-    private By loginLink = By.xpath("//a[text()='Login']"); // Update XPath if necessary
+    private By loginLink;// = By.xpath("//a[text()='Login']"); // Update XPath if necessary
 
     // Constructor to initialize WebDriver
     public HomePage(WebDriver driver) {
@@ -22,11 +22,12 @@ public class HomePage {
 
     // Method to navigate to Snapdeal homepage
     public void navigateToHomePage() {
-        driver.get("https://www.snapdeal.com/");
+        driver.get("https://www.snapdeal.com/login/");
         System.out.println("page navigate successfully.....");
-        WebElement l=driver.findElement(By.linkText("LOG IN"));
-        String v = l.getAttribute("href");
-        System.out.println("Anchor tag href retrived ."+v);
+        By elem1= By.xpath("//*[@id='userName']");
+        //WebElement l=driver.findElement(By.linkText("LOG IN"));
+        //String v = l.getAttribute("href");
+        System.out.println("Anchor tag href retrived ."+elem1);
         System.out.println(driver.getPageSource());
     }
 
