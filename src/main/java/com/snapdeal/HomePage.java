@@ -38,6 +38,7 @@ public class HomePage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         WebElement loginElement = wait.until(ExpectedConditions.visibilityOfElementLocated(loginLink));
         loginElement.click();
+        System.out.println("im here at Homepage() phase 2....");
        // System.out.println(driver.getPageSource());
     }
 }
