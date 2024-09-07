@@ -23,6 +23,10 @@ public class HomePage {
     // Method to navigate to Snapdeal homepage
     public void navigateToHomePage() {
         driver.get("https://www.snapdeal.com/");
+        System.out.println("page navigate successfully.....");
+        WebElement l=driver.findElement(By.linkText("LOG IN"));
+        String v = l.getAttribute("href");
+        System.out.println("Anchor tag href retrived ."+v);
         System.out.println(driver.getPageSource());
     }
 
