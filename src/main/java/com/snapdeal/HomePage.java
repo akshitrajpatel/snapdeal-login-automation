@@ -29,7 +29,7 @@ public class HomePage {
         String elementClass = element1.getAttribute("class");
 
         System.out.println("Class of ele1 : "+ elementClass);
-        System.out.println(driver.getPageSource());
+       // System.out.println(driver.getPageSource());
     }
 
     // Method to click on the login link with explicit wait
@@ -37,6 +37,6 @@ public class HomePage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         WebElement loginElement = wait.until(ExpectedConditions.visibilityOfElementLocated(loginLink));
         loginElement.click();
-        System.out.println(driver.getPageSource());
+       // System.out.println(driver.getPageSource());
     }
 }
