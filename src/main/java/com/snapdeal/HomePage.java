@@ -22,13 +22,13 @@ public class HomePage {
 
     // Method to navigate to Snapdeal homepage
     public void navigateToHomePage() {
-        driver.get("https://www.snapdeal.com/login/");
+        driver.get("https://www.snapdeal.com/");
         System.out.println("page navigate successfully.....");
-        By elem1= By.xpath("//*[@id='userName']");
-        WebElement element1 = driver.findElement(elem1);
-        String elementClass = element1.getAttribute("class");
+        //By elem1= By.xpath("//*[@id='userName']");
+        //WebElement element1 = driver.findElement(elem1);
+        //String elementClass = element1.getAttribute("class");
 
-        System.out.println("Class of ele1 : "+ elementClass);
+        //System.out.println("Class of ele1 : "+ elementClass);
        // System.out.println(driver.getPageSource());
     }
 
@@ -36,7 +36,8 @@ public class HomePage {
     public void clickLoginLink() {
         System.out.println("im here at Homepage() ....");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        WebElement loginElement = wait.until(ExpectedConditions.visibilityOfElementLocated(loginLink));
+        loginLink = By.xpath("//a[text()='login']");
+        WebElement loginElement = wait.until(ExpectedConditions.visibilityOfElementLocated(driver.findElement(loginLink)));
         loginElement.click();
         System.out.println("im here at Homepage() phase 2....");
        // System.out.println(driver.getPageSource());
