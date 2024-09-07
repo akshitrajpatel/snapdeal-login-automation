@@ -25,9 +25,10 @@ public class HomePage {
         driver.get("https://www.snapdeal.com/login/");
         System.out.println("page navigate successfully.....");
         By elem1= By.xpath("//*[@id='userName']");
-        //WebElement l=driver.findElement(By.linkText("LOG IN"));
-        //String v = l.getAttribute("href");
-        System.out.println("Anchor tag href retrived ."+elem1);
+        WebElement element1 = driver.findElement(elem1);
+        String elementClass = element.getAttribute("class");
+
+        System.out.println("Class of ele1 : "+ elementClass);
         System.out.println(driver.getPageSource());
     }
 
