@@ -26,7 +26,7 @@ public class HomePage {
         System.out.println("page navigate successfully.....");
         By elem1= By.xpath("//*[@id='userName']");
         WebElement element1 = driver.findElement(elem1);
-        String elementClass = element.getAttribute("class");
+        String elementClass = element1.getAttribute("class");
 
         System.out.println("Class of ele1 : "+ elementClass);
         System.out.println(driver.getPageSource());
