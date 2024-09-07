@@ -39,11 +39,11 @@ public class SnapdealLoginTest {
     public void testLogin() {
         // Navigate to Snapdeal homepage
         homePage.navigateToHomePage();
-        System.out.println(driver.getPageSource());
-
+        //System.out.println(driver.getPageSource());
+        System.out.println("im here at testLogin() ....");
         // Click on the login link/button
         homePage.clickLoginLink();
-        System.out.println(driver.getPageSource());
+        
 
         // Enter mobile number
         loginPage.enterMobileNumber("8318162329");
