@@ -14,7 +14,7 @@ public class HomePage {
     private WebDriver driver;
 
     // Define locator for the login link on the homepage
-    private By loginLink; // Update XPath if necessary
+    private By loginLink;
 
     // Constructor to initialize WebDriver
     public HomePage(WebDriver driver) {
@@ -24,30 +24,36 @@ public class HomePage {
     // Method to navigate to Snapdeal homepage
     public void navigateToHomePage() {
         driver.get("https://www.snapdeal.com/");
-        System.out.println("page navigate successfully.....");
-        //By elem1= By.xpath("//*[@id='userName']");
-        //WebElement element1 = driver.findElement(elem1);
-        //String elementClass = element1.getAttribute("class");
-
-        //System.out.println("Class of ele1 : "+ elementClass);
-       // System.out.println(driver.getPageSource());
+        System.out.println("Page navigated successfully...");
     }
 
     // Method to click on the login link with explicit wait
     public void clickLoginLink() {
-        System.out.println("im here at Homepage() ....");
+        System.out.println("Looking for login link...");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        loginLink = By.xpath("//a[text()='login']");
-        System.out.println(driver.getPageSource());
-        WebElement loginElement = wait.until(ExpectedConditions.visibilityOfElementLocated(loginLink));
-        System.out.println("Found login link, clicking...");
+
+        // Update XPath to use contains() for flexibility
+        loginLink = By.xpath("//a[contains(text(),'login')]");
+
         try {
+            WebElement loginElement = wait.until(ExpectedConditions.visibilityOfElementLocated(loginLink));
+            System.out.println("Found login link, scrolling into view...");
+
+            // Scroll into view if the element is off-screen
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].scrollIntoView(true);", loginElement);
+
+            System.out.println("Attempting to click login link...");
+
+            // Try clicking the element
             loginElement.click();
         } catch (Exception e) {
             System.out.println("Click failed, trying JavaScriptExecutor...");
             JavascriptExecutor js = (JavascriptExecutor) driver;
+            WebElement loginElement = driver.findElement(loginLink);
             js.executeScript("arguments[0].click();", loginElement);
         }
+
         System.out.println("Login link clicked, proceeding...");
     }
 }
